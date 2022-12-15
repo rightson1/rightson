@@ -9,7 +9,7 @@ const Contact = ({ section, setSection }) => {
   const scroll = useRef();
   useEffect(() => {
     if (section === "contact") {
-      scroll.current?.scrollIntoView({ behavior: "smooth" });
+      scroll.current?.scrollIntoView({ behavior: "smooth", block: "end" });
       setSection("");
     }
   });
@@ -72,8 +72,8 @@ const Contact = ({ section, setSection }) => {
       <motion.div
         className="header"
         style={{
-          x: 200,
-          scaleY: 0,
+          x: 130,
+          scaleY: 0.01,
         }}
         whileInView={{
           x: 0,
@@ -93,16 +93,16 @@ const Contact = ({ section, setSection }) => {
           <motion.div
             className="name inputs"
             style={{
-              x: 200,
-              scaleY: 0,
+              x: 100,
+              scaleY: 0.1,
+              opacity: 0,
             }}
             whileInView={{
               x: 0,
               scaleY: 1,
-
+              opacity: 1,
               transition: {
                 duration: 0.5,
-                delay: 0.3,
               },
             }}
           >
@@ -118,13 +118,14 @@ const Contact = ({ section, setSection }) => {
           <motion.div
             className="email inputs"
             style={{
-              x: -200,
-              scaleY: 0,
+              x: -140,
+              scaleY: 0.2,
+              opacity: 0,
             }}
             whileInView={{
               x: 0,
               scaleY: 1,
-
+              opacity: 1,
               transition: {
                 duration: 0.5,
                 delay: 0.3,
@@ -137,12 +138,14 @@ const Contact = ({ section, setSection }) => {
           <motion.div
             className="message inputs"
             style={{
-              x: -200,
-              scaleY: 0,
+              x: -150,
+              scaleY: 0.1,
+              opacity: 0,
             }}
             whileInView={{
               x: 0,
               scaleY: 1,
+              opacity: 1,
 
               transition: {
                 duration: 0.5,
@@ -161,14 +164,13 @@ const Contact = ({ section, setSection }) => {
           <motion.button
             className="send"
             style={{
-              y: 50,
-              scaleX: 0,
+              x: -150,
+              opacity: 0,
               cursor: "pointer",
             }}
             whileInView={{
-              y: 0,
-              scaleX: 1,
-
+              x: 0,
+              opacity: 1,
               transition: {
                 duration: 0.5,
                 delay: 0.3,
@@ -186,7 +188,7 @@ const Contact = ({ section, setSection }) => {
           drag
           dragConstraints={drag}
           style={{
-            x: -200,
+            x: -100,
             scaleY: 0,
           }}
           whileInView={{
@@ -211,7 +213,6 @@ const Contact = ({ section, setSection }) => {
 };
 const Container = styled(motion.div)`
   margin: 5rem 4rem;
-  margin: 6rem;
   padding: 1rem;
   opacity: 0.9;
   .Toastify__toast-body {
@@ -261,6 +262,7 @@ const Container = styled(motion.div)`
     opacity: 0.9;
 
     gap: 2rem;
+    width: 100%;
 
     .inputs {
       display: flex;
@@ -280,13 +282,13 @@ const Container = styled(motion.div)`
     .email {
       input {
         padding: 0.7rem;
-        min-width: 300px;
+        width: 90%;
       }
     }
     .send {
       font-family: "Handlee";
       padding: 0.6rem;
-      min-width: 350px;
+      width: 100%;
       border: none;
       outline: none;
 
@@ -301,7 +303,7 @@ const Container = styled(motion.div)`
     .message {
       textarea {
         padding: 1rem;
-        min-width: 350px;
+        min-width: 100%;
         min-height: 200px;
         border: none;
         outline: none;
@@ -318,26 +320,28 @@ const Container = styled(motion.div)`
 
   @media (max-width: 800px) {
     .bottom {
-      grid-template-columns: 1;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+
       .image {
         display: none;
       }
     }
     form {
-      width: 70%;
-      margin-left: 3rem;
+      width: 100%;
+
       gap: 3rem;
       .name,
       .email {
         input {
-          padding: 0.7rem;
-          min-width: 350px;
+          padding: 1rem;
+          width: 100%;
         }
       }
       .message {
-        input {
+        textarea {
           padding: 1rem;
-          min-width: 350px;
+
           min-height: 200px;
         }
       }

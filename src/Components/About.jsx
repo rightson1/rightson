@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import mypic from "../img/mypic.jpg";
-import { DiReact, DiJavascript1 as Javascript, DiSass } from "react-icons/di";
+import mypic from "../img/profile.png.jpg";
+import { DiReact, DiJavascript1 as Javascript, DiSass, DiMongodb, DiWordpress } from "react-icons/di";
 import { AiFillHtml5 as Html } from "react-icons/ai";
 import { FaNodeJs } from "react-icons/fa";
 import { SiStyledcomponents, SiSocketdotio } from "react-icons/si";
 import { motion } from "framer-motion";
+import { SiFirebase } from "react-icons/si"
 
 const About = ({ section, setSection }) => {
   const scroll = useRef();
@@ -22,10 +23,12 @@ const About = ({ section, setSection }) => {
           className="head"
           style={{
             x: -50,
-            scaleY: 0,
+            scaleY: 0.2,
+            opacity: 0,
           }}
           whileInView={{
             x: 0,
+            opacity: 1,
             scaleY: 1,
             transition: {
               duration: 0.5,
@@ -43,13 +46,13 @@ const About = ({ section, setSection }) => {
         <motion.div className="first">
           <motion.p
             style={{
-              x: 300,
-
+              x: 100,
+              opacity: 0,
               scaleY: 0,
             }}
             whileInView={{
               x: 0,
-
+              opacity: 1,
               scaleY: 1,
               transition: {
                 duration: 0.5,
@@ -59,20 +62,22 @@ const About = ({ section, setSection }) => {
           >
             Hello There, am Tole Rightson,second year student in riara
             university(This should prolly be in the education section:)), am
-            from kenya(Nairobi).Am A full stack web developer.My intrest in web
-            development started when i was 17, i guess, i was in highschool
+            from kenya(Nairobi).Am A full stack web developer.My interest in web
+            development started when i was 17 i guess, i was in highschool by
             then, i did not realise i would become a coding addict, but here we
             are :)
           </motion.p>
           <motion.div
             className="tech-title"
             style={{
-              x: -50,
-              scaleY: 0,
+              x: 100,
+              scaleX: 0.3,
+              opacity: 0,
             }}
             whileInView={{
               x: 0,
-              scaleY: 1,
+              opacity: 1,
+              scaleX: 1,
               transition: {
                 duration: 0.5,
                 delay: 0.7,
@@ -99,9 +104,9 @@ const About = ({ section, setSection }) => {
           >
             <motion.div
               style={{
-                x: 300,
+                x: 200,
 
-                scaleY: 0,
+                scaleY: 0.2,
               }}
               whileInView={{
                 x: 0,
@@ -137,7 +142,23 @@ const About = ({ section, setSection }) => {
             </motion.div>
             <motion.div>
               <SiSocketdotio />
-              <span> Socket io</span>
+              <span> Material UI</span>
+            </motion.div>
+            <motion.div>
+              <SiFirebase />
+              <span> Firebase</span>
+            </motion.div>
+            <motion.div>
+              <DiMongodb />
+              <span> Mongo DB && Mongoose</span>
+            </motion.div>
+            <motion.div>
+              <DiReact />
+              <span> Next Js</span>
+            </motion.div>
+            <motion.div>
+              <DiWordpress />
+              <span> Wordpress & Elementor</span>
             </motion.div>
           </motion.div>
           <motion.p
@@ -168,10 +189,8 @@ const About = ({ section, setSection }) => {
             scaleY: 0,
           }}
           whileHover={{
-            scale: 1.1,
+            scale: 1.05,
           }}
-          drag
-          dragConstraints={{ top: 5, left: 5, bottom: 5, right: 5 }}
           whileInView={{
             scaleY: 1,
             transition: {
@@ -190,11 +209,8 @@ const Container = styled(motion.div)`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 2rem;
-  margin: 2rem;
-  margin-left: 6rem;
 
   .about {
-    /* border: 2px solid rgba(100, 0, 100, 1); */
     border-radius: 2rem;
     text-align: left;
     padding: 1rem;
@@ -234,7 +250,7 @@ const Container = styled(motion.div)`
       gap: 1rem;
     }
     .nails {
-      margin: 1rem 0;
+      margin: 2rem 0;
     }
   }
   .image {
@@ -269,7 +285,7 @@ const Container = styled(motion.div)`
     grid-template-columns: 1fr;
     gap: 1rem;
     margin: 2rem;
-    margin-left: 3rem;
+
     .about {
       .tech {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -289,9 +305,27 @@ const Container = styled(motion.div)`
           height: 100%;
           object-fit: cover;
           width: 100%;
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
         }
       }
     }
+  }
+  @media (max-width: 480px) {
+    margin: 1rem;
+
+    .about {
+      .head {
+        h1 {
+        }
+        .line {
+          width: 2rem;
+        }
+      }
+    }
+  }
+  @media (min-width: 650px) {
+    margin: 3rem;
   }
 `;
 

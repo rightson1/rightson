@@ -6,7 +6,7 @@ const Education = ({ section, setSection }) => {
   const scroll = useRef();
   useEffect(() => {
     if (section === "education") {
-      scroll.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      scroll.current?.scrollIntoView({ behavior: "smooth", block: "end" });
       setSection("");
     }
   });
@@ -26,12 +26,14 @@ const Education = ({ section, setSection }) => {
       <motion.div
         className="head"
         style={{
-          y: 100,
-          scaleX: 0.3,
+          x: 100,
+          scaleY: 0.3,
+          opacity: 0.01,
         }}
         whileInView={{
-          y: 0,
-          scaleX: 1,
+          x: 0,
+          scaleY: 1,
+          opacity: 1,
 
           transition: {
             duration: 0.5,
@@ -48,11 +50,11 @@ const Education = ({ section, setSection }) => {
       </motion.div>
       <motion.div
         className="animate"
-        style={{ y: 100, scaleX: 0 }}
+        style={{ scaleY: 0.01, opacity: 0.01 }}
         whileInView={{
-          y: 0,
-          scaleX: 1,
-
+          scaleY: 1,
+          opacity: 1,
+          x: -4,
           transition: {
             duration: 0.5,
             delay: 0.3,
@@ -76,15 +78,15 @@ const Education = ({ section, setSection }) => {
           <div className="carosel">
             <h3>Highschool</h3>
             <p>
-              I went to chavakali highschool, Kenya(western),it was pretyy fun
-              but with some few challenges here abd there. Anyways i did not die
+              I went to chavakali highschool, Kenya(western),it was pretty fun
+              but with some few challenges here and there. Anyways i did not die
               :)
             </p>
           </div>
           <div className="carosel">
             <h3>University</h3>
             <p>
-              Still in University, second Yeah student pursuing computer science
+              Still in University, second year student pursuing computer science
               and trying to figure out what to do with my life
             </p>
           </div>
@@ -102,7 +104,7 @@ const Education = ({ section, setSection }) => {
       <div className="controls">
         <motion.div
           style={{
-            x: -100,
+            x: -20,
             scaleX: 0,
           }}
           onClick={() => handleClick("left")}
@@ -126,7 +128,7 @@ const Education = ({ section, setSection }) => {
         </motion.div>
         <motion.div
           style={{
-            x: 100,
+            x: 20,
             scaleX: 0,
           }}
           onClick={() => handleClick("right")}
@@ -163,7 +165,7 @@ const Container = styled.div`
     display: flex;
 
     .carosel {
-      min-width: 300px;
+      min-width: 250px;
       padding: 2rem;
       border: 2px solid white;
       margin: 2rem;
@@ -224,6 +226,7 @@ const Container = styled.div`
       }
     }
   }
+
   @media (min-width: 1200px) {
     .controls {
       display: none;
